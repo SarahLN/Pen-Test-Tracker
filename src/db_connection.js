@@ -15,5 +15,3 @@ connection.query('INSERT INTO testtable (description) VALUES ("test1")', functio
 });
 
 connection.end();
-
-alert('test');
