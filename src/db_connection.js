@@ -11,7 +11,7 @@ connection.connect();
 
 connection.query('INSERT INTO testtable (description) VALUES ("test1")', function (error, results, fields) {
   if (error) throw error;
-  console.log('1 + 1 = ', results[0].result);
+  console.log('1 record inserted');
 });
 
 connection.end();
