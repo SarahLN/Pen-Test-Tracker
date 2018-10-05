@@ -5,6 +5,7 @@
 </head>
 <body style="overflow: hidden; background-color: rgba(0,0,0,0); margin: 0" >
   <div id="Toolbar"></div>
+  <div id="Header"></div>
 </body>
 
 <script type="text/jsx">
@@ -14,7 +15,9 @@ import {AppContainer} from 'react-hot-loader';
 
 const render = () => {
   const Toolbar = require('./toolbar').default;
+  const Header = require('./header').default;
   ReactDOM.render(<AppContainer><Toolbar /></AppContainer>, document.getElementById('Toolbar'));
+  ReactDOM.render(<AppContainer><Header /></AppContainer>, document.getElementById('Header'));
 }
 
 render();
