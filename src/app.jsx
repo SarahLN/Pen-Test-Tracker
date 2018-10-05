@@ -9,11 +9,10 @@ export default class App extends React.Component {
         <AppBar position="static">
             <Toolbar>
                 <Typography variant="title" color="inherit">
-                React & Material-UI Sample Application
+                  Pen Test Tracker
                 </Typography>
             </Toolbar>
         </AppBar>
-      <h2>Welcome to React!</h2>
     </div>);
   }
 }
