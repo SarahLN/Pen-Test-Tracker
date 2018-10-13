@@ -52,8 +52,8 @@
     "electron-devtools-installer": "^2.1.0",
     "electron-squirrel-startup": "^1.0.0",
     "mysql": "^2.16.0",
-    "react": "^15.4.1",
-    "react-dom": "^15.4.1",
+    "react": "^15.6.0",
+    "react-dom": "^15.6.0",
     "react-hot-loader": "^3.0.0-beta.6"
   },
   "devDependencies": {
@@ -62,7 +62,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "electron-forge": "^5.2.2",
-    "electron-prebuilt-compile": "3.0.0",
+    "electron-prebuilt-compile": "3.0.2",
     "eslint": "^3",
     "eslint-config-airbnb": "^15",
     "eslint-plugin-import": "^2",
