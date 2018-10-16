@@ -20,12 +20,14 @@ export default class AppToolbar extends React.Component {
   }
 
   handleClick(event) {
-    console.log(event.currentTarget.id);
-    this.setState({ anchorEl: event.currentTarget });
+    this.setState({ anchorEl: event.currentTarget.id });
+    if (event.currentTarget.id != "Menu") {
+      this.props.onMenuSelect(event.currentTarget.id);
+    }
   }
 
   handleClose(event) {
-    console.log(event.currentTarget.id);
+    this.setState({ anchorEl: null });
     this.props.onMenuSelect(event.currentTarget.id);
   }
 
@@ -46,7 +48,6 @@ export default class AppToolbar extends React.Component {
               </IconButton>
               <Menu
                 id="toolbar-menu"
-                anchorEl={anchorEl}
                 open={Boolean(anchorEl)}
                 onClose={this.handleClose.bind(this)}
               >
