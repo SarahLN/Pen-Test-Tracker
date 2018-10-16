@@ -10,6 +10,7 @@ class Settings extends React.Component {
   render() {
     return (
       <div>
+        <h2>Settings</h2>
         <TextField
           required
           id="outlined-full-width"
