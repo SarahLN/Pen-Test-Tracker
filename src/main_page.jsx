@@ -2,6 +2,7 @@ import React from 'react'
 
 import AppToolbar from './components/toolbar'
 import Settings from './components/settings'
+import SearchPage from './components/search'
 
 class App extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class App extends React.Component {
       display_page = <Settings />;
     } else {
       // Load the default page
-      display_page = <p>This is the main page</p>;
+      display_page = <SearchPage />;
     }
     return(
       <div>
