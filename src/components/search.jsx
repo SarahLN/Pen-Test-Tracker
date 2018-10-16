@@ -5,6 +5,8 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
+import SearchBar from './searchbar'
+
 class SearchPage extends React.Component {
   constructor(props) {
     super(props);
@@ -17,18 +19,18 @@ class SearchPage extends React.Component {
           <Grid item sm={12}>
             <Paper elevation={1}>
               <Typography component="p">
-                This is where the search bar will go.
+                <SearchBar />
               </Typography>
             </Paper>
           </Grid>
-          <Grid item sm={3}>
+          <Grid item sm={2}>
             <Paper elevation={1}>
               <Typography component="p">
                 This is where the advanced search pane will go.
               </Typography>
             </Paper>
           </Grid>
-          <Grid item sm={9}>
+          <Grid item sm={10}>
             <Paper elevation={1}>
               <Typography component="p">
                 This is where the results will go.
