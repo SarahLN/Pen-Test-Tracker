@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
 import SearchBar from './searchbar'
+import FilterItem from './filteritem'
 
 class SearchPage extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class SearchPage extends React.Component {
           <Grid item sm={2}>
             <Paper elevation={1}>
               <Typography component="p">
-                This is where the advanced search pane will go.
+                <FilterItem name="Port" />
               </Typography>
             </Paper>
           </Grid>
