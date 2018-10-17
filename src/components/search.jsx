@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 
 import SearchBar from './searchbar'
 import FilterItem from './filteritem'
+import ResultsGrid from './resultsgrid'
 
 class SearchPage extends React.Component {
   constructor(props) {
@@ -19,23 +20,17 @@ class SearchPage extends React.Component {
         <Grid container spacing={16}>
           <Grid item sm={12}>
             <Paper elevation={1}>
-              <Typography component="p">
-                <SearchBar />
-              </Typography>
+              <SearchBar />
             </Paper>
           </Grid>
           <Grid item sm={2}>
             <Paper elevation={1}>
-              <Typography component="p">
-                <FilterItem name="Port" />
-              </Typography>
+              <FilterItem name="Port" />
             </Paper>
           </Grid>
           <Grid item sm={10}>
             <Paper elevation={1}>
-              <Typography component="p">
-                This is where the results will go.
-              </Typography>
+              <ResultsGrid />
             </Paper>
           </Grid>
         </Grid>
