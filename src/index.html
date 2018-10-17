@@ -5,8 +5,6 @@
 </head>
 <body style="overflow: hidden; background-color: rgba(0,0,0,0); margin: 0" >
   <div id="Toolbar"></div>
-  <div id="Header"></div>
-  <div id="Settings"></div>
 </body>
 
 <script type="text/jsx">
@@ -15,12 +13,8 @@ import ReactDOM from 'react-dom';
 import {AppContainer} from 'react-hot-loader';
 
 const render = () => {
-  const Toolbar = require('./toolbar').default;
-  const Header = require('./header').default;
-  const Settings = require('./settings').default;
-  ReactDOM.render(<AppContainer><Toolbar /></AppContainer>, document.getElementById('Toolbar'));
-  ReactDOM.render(<AppContainer><Header /></AppContainer>, document.getElementById('Header'));
-  ReactDOM.render(<AppContainer><Settings /></AppContainer>, document.getElementById('Settings'));
+  const Index = require('./main_page').default;
+  ReactDOM.render(<AppContainer><Index /></AppContainer>, document.getElementById('Toolbar'));
 }
 
 render();
