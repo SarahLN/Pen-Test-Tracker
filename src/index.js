@@ -1,6 +1,7 @@
 import { app, BrowserWindow } from 'electron';
 import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
 import { enableLiveReload } from 'electron-compile';
+import { CronJob } from 'cron';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -9,6 +10,11 @@ let mainWindow;
 const isDevMode = process.execPath.match(/[\\/]electron/);
 
 if (isDevMode) enableLiveReload({ strategy: 'react-hmr' });
+
+const job = new CronJob('* * * * * *', function() {
+  const d = new Date();
+  console.log('Every second: ', d);
+});
 
 const createWindow = async () => {
   // Create the browser window.
@@ -33,6 +39,8 @@ const createWindow = async () => {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+
+  job.start();
 };
 
 // This method will be called when Electron has finished
@@ -45,6 +53,7 @@ app.on('window-all-closed', () => {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
+    job.stop();
     app.quit();
   }
 });
