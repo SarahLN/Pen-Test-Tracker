@@ -13,7 +13,7 @@ class Settings extends React.Component {
     this.userSettings = new UserSettingsStorage({
       configName: 'user-preferences',
       defaults: {
-        data_folder: 'testpath'
+        data_folder: ''
       }
     });
 
