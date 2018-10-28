@@ -2,7 +2,7 @@ import React from 'react'
 
 import AppToolbar from './components/toolbar'
 import Settings from './components/settings'
-import SearchPage from './components/search'
+import SearchPage from './components/searchpage'
 
 class App extends React.Component {
   constructor(props) {
