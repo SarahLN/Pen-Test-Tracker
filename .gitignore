@@ -4,3 +4,7 @@ out
 generalNotes.txt
 \.idea
 *.pyc
+src/python/online_example.xml
+src/python/os_scan.xml
+src/python/os_scan2.xml
+src/python/ver_scan3.xml
