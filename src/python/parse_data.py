@@ -5,13 +5,15 @@ import argparse
 import datetime
 import os
 
-parser = argparse.ArgumentParser()
-parser.add_argument('-p', '--path', help='the path to the folder that we are monitoring')
-args = parser.parse_args()
+# parser = argparse.ArgumentParser()
+# parser.add_argument('-p', '--path', help='the path to the folder that we are monitoring')
+# args = parser.parse_args()
 
 ptdb = PenTestDBConn()
 
-path = args.path
+# path = args.path
+# TODO: switch this to parameter
+path = 'C:\\Users\\sarah\\Desktop\\output'
 try:
     files = os.listdir(path)
 except FileNotFoundError as e:
