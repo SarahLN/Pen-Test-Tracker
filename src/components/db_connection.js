@@ -5,7 +5,7 @@ class DB_Connection {
     this.connection = mysql.createConnection({
       host  : 'localhost',
       user  : 'root',
-      password  : 'yy3d5Inj9as6oFPT90',
+      password  : 'PASSWORD HERE',
       database  : 'pentestdb'
     });
   }
@@ -18,11 +18,12 @@ class DB_Connection {
     this.connection.end();
   }
 
-  run_query(query) {
+  run_query(query, callback) {
     this.connect_to_db();
     this.connection.query(query, function (error, results, fields) {
       if (error) throw error;
-      console.log('query ran: ', query);
+      //console.log('results: ', results);
+      callback(results);
     });
     this.disconnect_from_db();
   }
