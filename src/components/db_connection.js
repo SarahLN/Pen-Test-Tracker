@@ -5,7 +5,7 @@ class DB_Connection {
     this.connection = mysql.createConnection({
       host  : 'localhost',
       user  : 'root',
-      password  : 'PASSWORDHERE',
+      password  : 'yy3d5Inj9as6oFPT90',
       database  : 'pentestdb'
     });
   }
