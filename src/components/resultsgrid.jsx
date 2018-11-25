@@ -6,10 +6,56 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import DB_Connection from './db_connection';
 
 class ResultsGrid extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      results_data: 0
+    };
+    this.get_data = this.get_data.bind(this);
+    this.save_data = this.save_data.bind(this);
+    this.create_table = this.create_table.bind(this);
+  }
+
+  componentDidMount() {
+    this.get_data();
+  }
+
+  save_data(results) {
+    this.setState({ results_data: results });
+  }
+
+  get_data() {
+    var result = null;
+    let conn = new DB_Connection();
+    return conn.run_query('CALL pentestdb.get_result_grid();', this.save_data);
+  };
+
+  create_table() {
+    // Loop to create children
+    if (this.state.results_data == 0) {
+      // I put this here so it doesn't fail when the function is called the first time.
+      // The second time (after componentDidMount is called) it will go to the
+      // else condition and everything will be fine.
+      console.log('state not yet set');
+    } else {
+        let children = [];
+        for (let i=0; i < this.state.results_data[0].length; i++) {
+          children.push(
+            <TableRow key={this.state.results_data[0][i].id}>
+              <TableCell>{this.state.results_data[0][i].ip_addr}</TableCell>
+              <TableCell>{this.state.results_data[0][i].port_num}</TableCell>
+              <TableCell>{this.state.results_data[0][i].protocol}</TableCell>
+              <TableCell>{this.state.results_data[0][i].name}</TableCell>
+              <TableCell>{this.state.results_data[0][i].product}</TableCell>
+              <TableCell>{this.state.results_data[0][i].version}</TableCell>
+            </TableRow>
+          );
+        }
+        return children;
+    }
   }
 
   render() {
@@ -17,49 +63,16 @@ class ResultsGrid extends React.Component {
       <Table className="resultsTable">
         <TableHead>
           <TableRow>
-            <TableCell>Hostname</TableCell>
             <TableCell>IP Address</TableCell>
             <TableCell>Port</TableCell>
             <TableCell>Protocol</TableCell>
             <TableCell>Service</TableCell>
+            <TableCell>Product</TableCell>
+            <TableCell>Version</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow key="1">
-            <TableCell component="th" scope="row">lablin01</TableCell>
-            <TableCell>10.16.5.65</TableCell>
-            <TableCell>22</TableCell>
-            <TableCell>TCP</TableCell>
-            <TableCell>SSH</TableCell>
-          </TableRow>
-          <TableRow key="2">
-            <TableCell component="th" scope="row">lablin01</TableCell>
-            <TableCell>10.16.5.65</TableCell>
-            <TableCell>80</TableCell>
-            <TableCell>TCP</TableCell>
-            <TableCell>HTTPS</TableCell>
-          </TableRow>
-          <TableRow key="3">
-            <TableCell component="th" scope="row">lablin01</TableCell>
-            <TableCell>10.16.5.65</TableCell>
-            <TableCell>443</TableCell>
-            <TableCell>TCP</TableCell>
-            <TableCell>HTTPS</TableCell>
-          </TableRow>
-          <TableRow key="4">
-            <TableCell component="th" scope="row">labwin03</TableCell>
-            <TableCell>10.12.5.16</TableCell>
-            <TableCell>3389</TableCell>
-            <TableCell>TCP</TableCell>
-            <TableCell>Microsoft RDS</TableCell>
-          </TableRow>
-          <TableRow key="5">
-            <TableCell component="th" scope="row">labwin03</TableCell>
-            <TableCell>10.12.5.16</TableCell>
-            <TableCell>443</TableCell>
-            <TableCell>TCP</TableCell>
-            <TableCell>HTTPS</TableCell>
-          </TableRow>
+          {this.create_table()}
         </TableBody>
       </Table>
     )
