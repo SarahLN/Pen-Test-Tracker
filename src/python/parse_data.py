@@ -4,16 +4,15 @@ from pentestdbconn import PenTestDBConn
 import argparse
 import datetime
 import os
+import base64
 
-# parser = argparse.ArgumentParser()
-# parser.add_argument('-p', '--path', help='the path to the folder that we are monitoring')
-# args = parser.parse_args()
+parser = argparse.ArgumentParser()
+# parser.add_argument('-t', '--test', help='testing')
+parser.add_argument('-p', '--path', help='the path to the folder that we are monitoring, encoded using base64')
+args = parser.parse_args()
 
 ptdb = PenTestDBConn()
-
-# path = args.path
-# TODO: switch this to parameter
-path = 'C:\\Users\\sarah\\Desktop\\output'
+path = base64.b64decode(args.path)
 try:
     files = os.listdir(path)
 except FileNotFoundError as e:
@@ -22,10 +21,10 @@ except FileNotFoundError as e:
 os.chdir(path)
 
 for file in files:
-    if file == 'archive':
+    if file.decode('utf-8') == 'archive':
         continue
 
-    nmap_report = NmapParser.parse_fromfile(file)
+    nmap_report = NmapParser.parse_fromfile(file.decode('utf-8'))
 
     for scanned_host in nmap_report.hosts:
         address = scanned_host.address  # ip address
@@ -54,8 +53,8 @@ for file in files:
 
             record_id = ptdb.insert_host_port_details_record(host_id, port_id, service_id, status)
 
-    # begin archiving this file
-    if not os.path.exists('archive'):
-        os.makedirs('archive')
-    ts = datetime.datetime.now().strftime('%Y%m%d%H%M')
-    os.rename(file, 'archive/{0}_{1}'.format(ts, file))
+        # begin archiving this file
+        if not os.path.exists('archive'):
+            os.makedirs('archive')
+        ts = datetime.datetime.now().strftime('%Y%m%d%H%M')
+        os.rename(file, 'archive/{0}_{1}'.format(ts, file.decode('utf-8')))
