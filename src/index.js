@@ -3,6 +3,7 @@ import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-insta
 import { enableLiveReload } from 'electron-compile';
 import { CronJob } from 'cron';
 import { PythonShell } from 'python-shell';
+import UserSettingsStorage from './utilities/user_setting_storage';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -12,10 +13,26 @@ const isDevMode = process.execPath.match(/[\\/]electron/);
 
 if (isDevMode) enableLiveReload({ strategy: 'react-hmr' });
 
+let userSettings = new UserSettingsStorage({
+  configName: 'user-preferences',
+  defaults: {
+    data_folder: ''
+  }
+});
+let path = userSettings.get('data_folder');
+// Base64 encode path to avoid issues with passing full paths to PythonShell.
+let enc_path = Buffer.from(path).toString('base64')
+console.log(enc_path);
+
+let options = {
+  mode: 'text',
+  args: ["-p " + enc_path]
+};
+
 // currently job is running every 1 minute
 // TODO: adjust this to appropriate time frame
 const job = new CronJob('0 */1 * * * *', function() {
-  PythonShell.run(`${__dirname}/python/parse_data.py`, null, function(err, results) {
+  PythonShell.run(`${__dirname}/python/parse_data.py`, options, function(err, results) {
     if (err) throw err;
     console.log('parse_data.py results:', results);
   });
