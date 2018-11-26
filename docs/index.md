@@ -8,12 +8,14 @@ This app runs locally on a pen test workstation and imports select data into a
 database for querying and general organization using a desktop-based GUI.
 
 The app uses the following technologies:
+
 * Electron with React.JS
 
 * MySQL  
 
 
 At the time of publishing, the following data sources are accepted:
+
 * Nmap Scan data including port, service, and os information - COMPLETE
 
 * Enum4Linux - Planned
@@ -42,6 +44,7 @@ are many steps, so sorry!
 
 The following items are still on the to-do list for making this app better and
 more stable.
+
 * Add more data sources (highlighted in Overview)
 
 * Add error checking to make sure that the app doesn't crash the first time
