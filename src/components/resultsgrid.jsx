@@ -54,7 +54,6 @@ class ResultsGrid extends React.Component {
             ]
           );
         }
-        console.log(children);
         return children;
     }
   }
