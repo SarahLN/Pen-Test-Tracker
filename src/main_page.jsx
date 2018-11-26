@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props)
     this.handlePageChange = this.handlePageChange.bind(this);
     this.state = {
-      name: "Sarah",
+      name: "",
       currPage: null,
     }
   }

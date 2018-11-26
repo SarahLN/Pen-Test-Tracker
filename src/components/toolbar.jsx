@@ -59,7 +59,7 @@ export default class AppToolbar extends React.Component {
                 </MenuItem>
               </Menu>
               <Typography variant="title" color="inherit">
-                Pen Test Tracker, {this.state.name}
+                Pen Test Tracker
               </Typography>
             </Toolbar>
         </AppBar>
