@@ -61,13 +61,20 @@ class ResultsGrid extends React.Component {
   }
 
   render() {
-    const columns = ['Ip Address', 'Port', 'Protocol', 'Service', 'Product', 'Version'];
+    const columns = ['IP Address', 'Port', 'Protocol', 'Service', 'Product', 'Version'];
     const data = this.create_table();
+    const options = {
+      filter: true,
+      filterType: 'multiselect',
+      resizableColumns: true,
+      print: false
+    };
     return (
       <MUIDataTable
         title={'Discovered Assets'}
         data = { data }
         columns = { columns }
+        options = { options }
       />
     )
   }
