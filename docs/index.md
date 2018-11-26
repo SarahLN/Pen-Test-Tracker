@@ -1,13 +1,24 @@
-# Welcome to MkDocs
+# Welcome to the Pen Test Tracker App
 
-For full documentation visit [mkdocs.org](https://mkdocs.org).
+This app allows tracking basic data during a pen test.  It is a work in progress.
 
-## Commands
+## Overview
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs help` - Print this help message.
+This app runs locally on a pen test workstation and imports select data into a
+database for querying and general organization using a desktop-based GUI.
+
+The app uses the following technologies:
+* Electron with React.JS
+* MySQL  
+
+At the time of publishing, the following data sources are accepted:
+* Nmap Scan data including port, service, and os information - COMPLETE
+* Enum4Linux - Planned
+* WHOIS - Planned
+* Host command output - Planned
+* DNSEnum - Planned
+
+
 
 ## Project layout
 
