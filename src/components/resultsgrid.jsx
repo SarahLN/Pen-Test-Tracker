@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import DB_Connection from './db_connection';
+import MUIDataTable from "mui-datatables";
 
 class ResultsGrid extends React.Component {
   constructor(props) {
@@ -44,14 +44,14 @@ class ResultsGrid extends React.Component {
         let children = [];
         for (let i=0; i < this.state.results_data[0].length; i++) {
           children.push(
-            <TableRow key={this.state.results_data[0][i].id}>
-              <TableCell>{this.state.results_data[0][i].ip_addr}</TableCell>
-              <TableCell>{this.state.results_data[0][i].port_num}</TableCell>
-              <TableCell>{this.state.results_data[0][i].protocol}</TableCell>
-              <TableCell>{this.state.results_data[0][i].name}</TableCell>
-              <TableCell>{this.state.results_data[0][i].product}</TableCell>
-              <TableCell>{this.state.results_data[0][i].version}</TableCell>
-            </TableRow>
+            [
+              this.state.results_data[0][i].ip_addr,
+              this.state.results_data[0][i].port_num,
+              this.state.results_data[0][i].protocol,
+              this.state.results_data[0][i].name,
+              this.state.results_data[0][i].product,
+              this.state.results_data[0][i].version
+            ]
           );
         }
         return children;
@@ -59,22 +59,21 @@ class ResultsGrid extends React.Component {
   }
 
   render() {
+    const columns = ['IP Address', 'Port', 'Protocol', 'Service', 'Product', 'Version'];
+    const data = this.create_table();
+    const options = {
+      filter: true,
+      filterType: 'multiselect',
+      resizableColumns: true,
+      print: false
+    };
     return (
-      <Table className="resultsTable">
-        <TableHead>
-          <TableRow>
-            <TableCell>IP Address</TableCell>
-            <TableCell>Port</TableCell>
-            <TableCell>Protocol</TableCell>
-            <TableCell>Service</TableCell>
-            <TableCell>Product</TableCell>
-            <TableCell>Version</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {this.create_table()}
-        </TableBody>
-      </Table>
+      <MUIDataTable
+        title={'Discovered Assets'}
+        data = { data }
+        columns = { columns }
+        options = { options }
+      />
     )
   }
 }
