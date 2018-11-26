@@ -1,17 +1,46 @@
-# Welcome to MkDocs
+# Welcome to the Pen Test Tracker App
 
-For full documentation visit [mkdocs.org](https://mkdocs.org).
+This app allows tracking basic data during a pen test.  It is a work in progress.
 
-## Commands
+## Overview
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs help` - Print this help message.
+This app runs locally on a pen test workstation and imports select data into a
+database for querying and general organization using a desktop-based GUI.
 
-## Project layout
+The app uses the following technologies:
+* Electron with React.JS
+* MySQL  
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+At the time of publishing, the following data sources are accepted:
+* Nmap Scan data including port, service, and os information - COMPLETE
+* Enum4Linux - Planned
+* WHOIS - Planned
+* Host command output - Planned
+* DNSEnum - Planned
+
+Data is ingested into the app by saving the data to a user-defined folder on
+the file system, which is monitored by the app.  When a new file is added,
+the app retrieves the file contents, parses and stores the data, and archives
+the file for later reference if needed.  Once the data has been parsed and stored,
+it is available for viewing and querying in the GUI immediately.
+
+## Installation
+
+This section outlines how to install the app.  Since this is still in progress, there
+are many steps, so sorry!
+
+
+
+## Items Still To Do
+
+The following items are still on the to-do list for making this app better and
+more stable.
+* Add more data sources (highlighted in Overview)
+* Add error checking to make sure that the app doesn't crash the first time
+it is used and a data folder hasn't been set yet.
+* Store the database connection information in an encrypted config file for
+security.
+* Add additional configuration items including:
+  * Frequency to check the data folder
+  * Database connection information
+* Make installation a one-click thing
