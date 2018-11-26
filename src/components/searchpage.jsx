@@ -13,11 +13,14 @@ class SearchPage extends React.Component {
   }
 
   render() {
+    const style = {
+      padding: 20
+    };
     return (
       <div>
         <Grid container spacing={16}>
-          <Grid item sm={10}>
-            <Paper elevation={1}>
+          <Grid item sm={12}>
+            <Paper style={style} elevation={1}>
               <ResultsGrid />
             </Paper>
           </Grid>
