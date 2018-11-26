@@ -44,6 +44,16 @@ are many steps, so sorry!
 
 3. Create the database schema, tables, etc. - This can be done by running the [create_db.sql](./create_db.sql) script on the database.
 
+Once all of these dependencies have been installed, the app can be run by downloading
+a local copy of the git repository and running
+```shell
+electron-forge start
+```
+This will allow the app to run locally on your system.
+
+## Getting Started in the App
+
+
 
 ## Items Still To Do
 
