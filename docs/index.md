@@ -39,11 +39,17 @@ This section outlines how to install the app.  Since this is still in progress, 
 are many steps, so sorry!
 
 1. [Install Node.JS](https://nodejs.org/en/download/)
-  * This app was built and tested on Node.JS v8.12.0.
+
+  This app was built and tested on Node.JS v8.12.0.
+
 2. [Install MySQL](https://dev.mysql.com/doc/refman/8.0/en/installing.html)
-  * This app was built and test on MySQL 8.0.12
+
+  This app was built and test on MySQL 8.0.12
+
 3. Create the database schema, tables, etc.
-  * This can be done by running the [create_db.sql](./create_db.sql) script on the database.
+
+  This can be done by running the [create_db.sql](./create_db.sql) script on the database.
+  
 
 ## Items Still To Do
 
