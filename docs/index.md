@@ -42,7 +42,14 @@ are many steps, so sorry!
 
 2. [Install MySQL](https://dev.mysql.com/doc/refman/8.0/en/installing.html) - This app was built and test on MySQL 8.0.12
 
-3. Create the database schema, tables, etc. - This can be done by running the [create_db.sql](./create_db.sql) script on the database.
+3. Update the database username and password with the values set during install.  
+Currently, this must be done manually by updating the following locations:
+
+  1. pen-test-tracker/src/components/db_connection.js lines 7 & 8
+  2. pen-test-tracker/src/python/pentestdbconn.py line 9
+  
+
+4. Create the database schema, tables, etc. - This can be done by running the [create_db.sql](./create_db.sql) script on the database.
 
 Once all of these dependencies have been installed, the app can be run by downloading
 a local copy of the git repository and running
@@ -53,7 +60,7 @@ This will allow the app to run locally on your system.
 
 ## Getting Started in the App
 
-
+Upon launching
 
 ## Items Still To Do
 
