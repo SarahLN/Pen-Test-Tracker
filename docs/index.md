@@ -46,11 +46,19 @@ are many steps, so sorry!
 Currently, this must be done manually by updating the following locations:
 
     * pen-test-tracker/src/components/db_connection.js lines 7 & 8
-    
+
     * pen-test-tracker/src/python/pentestdbconn.py line 9
 
 
 4. Create the database schema, tables, etc. - This can be done by running the [create_db.sql](./create_db.sql) script on the database.
+
+5. Install Python - This app was built and tested with Python 3.6.5.  The following packages are required:
+
+    * NmapParser
+
+    * sqlalchemy
+
+    * pandas
 
 Once all of these dependencies have been installed, the app can be run by downloading
 a local copy of the git repository and running
